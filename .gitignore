@@ -7,10 +7,12 @@
 .metadata
 bin/
 tmp/
+idea/
 *.tmp
 *.bak
 *.swp
 *~.nib
+*.iml
 local.properties
 .classpath
 .settings/
