@@ -1,9 +1,9 @@
 package org.nthdimenzion.dbc.postcondition;
 
-import com.google.common.collect.Sets;
 import org.nthdimenzion.IConstraints;
 
 import javax.validation.ConstraintViolation;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public class PostconditionFailedException extends RuntimeException implements IConstraints {
 
-    Set<ConstraintViolation> constraintViolations = Sets.newHashSet();
+    Set<ConstraintViolation> constraintViolations = new HashSet();
 
     public PostconditionFailedException() {
     }

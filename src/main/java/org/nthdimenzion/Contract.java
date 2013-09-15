@@ -1,6 +1,5 @@
 package org.nthdimenzion;
 
-import com.google.common.collect.Sets;
 import org.nthdimenzion.dbc.postcondition.PostconditionFailedException;
 import org.nthdimenzion.dbc.precondition.PreconditionFailedException;
 import org.nthdimenzion.invariant.ICheckInvariant;
@@ -10,6 +9,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -42,7 +42,7 @@ public final class Contract {
     public static <T> void requires(T object, Class<?>... groups){
         Set<ConstraintViolation<T>> constraintViolations = validator.validate(object, groups);
         if(constraintViolations!=null && constraintViolations.size() > 0){
-            throw new PreconditionFailedException(Sets.<ConstraintViolation>newHashSet(constraintViolations));
+            throw new PreconditionFailedException(new HashSet<ConstraintViolation>(constraintViolations));
         }
     }
 
@@ -50,12 +50,12 @@ public final class Contract {
         iCheckInvariant.checkInvariant();
         Set<ConstraintViolation<ICheckInvariant>> constraintViolations = validator.validate(iCheckInvariant, groups);
         if(constraintViolations!=null && constraintViolations.size() > 0){
-            throw new InvariantFailedException(Sets.<ConstraintViolation>newHashSet(constraintViolations));
+            throw new InvariantFailedException(new HashSet<ConstraintViolation>(constraintViolations));
         }
     }
 
     public static void ensures(boolean postCondition){
-        ensures(postCondition,"");
+        ensures(postCondition, "");
     }
 
     public static void ensures(boolean postCondition,Object errorMessage){
@@ -67,7 +67,7 @@ public final class Contract {
     public static <T> void ensures(T object, Class<?>... groups){
         Set<ConstraintViolation<T>> constraintViolations = validator.validate(object, groups);
         if(constraintViolations!=null && constraintViolations.size() > 0){
-            throw new PostconditionFailedException(Sets.<ConstraintViolation>newHashSet(constraintViolations));
+            throw new PostconditionFailedException(new HashSet<ConstraintViolation>(constraintViolations));
         }
     }
 

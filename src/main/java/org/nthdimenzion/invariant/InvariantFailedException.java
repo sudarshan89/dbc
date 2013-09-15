@@ -1,6 +1,5 @@
 package org.nthdimenzion.invariant;
 
-import com.google.common.collect.Sets;
 import org.nthdimenzion.IConstraints;
 
 import javax.validation.ConstraintViolation;
@@ -14,7 +13,7 @@ import java.util.Set;
  * Time: 9:58 PM
  */
 public class InvariantFailedException extends RuntimeException implements IConstraints {
-    Set<ConstraintViolation> constraintViolations = Sets.newHashSet();
+    Set<ConstraintViolation> constraintViolations = new HashSet();
 
     public InvariantFailedException() {
     }

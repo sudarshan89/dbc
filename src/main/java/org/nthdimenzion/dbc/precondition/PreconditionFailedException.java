@@ -1,9 +1,9 @@
 package org.nthdimenzion.dbc.precondition;
 
-import com.google.common.collect.Sets;
 import org.nthdimenzion.IConstraints;
 
 import javax.validation.ConstraintViolation;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public class PreconditionFailedException extends RuntimeException implements IConstraints {
 
-    Set<ConstraintViolation> constraintViolations = Sets.newHashSet();
+    Set<ConstraintViolation> constraintViolations = new HashSet();
 
     public PreconditionFailedException() {
     }
