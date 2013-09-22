@@ -1,7 +1,6 @@
 package org.nthdimenzion.example;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.nthdimenzion.Contract;
 
 import javax.validation.constraints.NotNull;

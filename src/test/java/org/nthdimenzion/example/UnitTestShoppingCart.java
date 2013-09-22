@@ -6,8 +6,6 @@ import org.nthdimenzion.Contract;
 import org.nthdimenzion.invariant.ICheckInvariant;
 import org.nthdimenzion.invariant.InvariantFailedException;
 
-import javax.validation.constraints.NotNull;
-import java.awt.print.Book;
 import java.math.BigDecimal;
 
 /**
