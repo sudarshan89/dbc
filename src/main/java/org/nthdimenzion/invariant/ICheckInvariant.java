@@ -1,8 +1,8 @@
 package org.nthdimenzion.invariant;
 
-import org.nthdimenzion.invariant.InvariantFailedException;
-
 /**
+ * Class invariant can be checked either via custom annotations or by implementing the ICheckVariant interface
+ *
  * Created by IntelliJ IDEA.
  * User: Nthdimenzion
  * Date: 15/9/13

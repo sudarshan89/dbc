@@ -47,9 +47,25 @@ public final class Contract {
         }
     }
 
+    /**
+     * Class invariants can be defined using the Bean validation API for by implementing the ICheckInvariant interface
+     * @param iCheckInvariant
+     * @param groups
+     */
     public static void checkInvariants(ICheckInvariant iCheckInvariant, Class<?>... groups){
         iCheckInvariant.checkInvariant();
         Set<ConstraintViolation<ICheckInvariant>> constraintViolations = validator.validate(iCheckInvariant, groups);
+        if(constraintViolations!=null && constraintViolations.size() > 0){
+            throw new InvariantFailedException(new HashSet<ConstraintViolation>(constraintViolations));
+        }
+    }
+
+    /**
+     * Class invariants can be defined using the Bean validation API for by implementing the ICheckInvariant interface
+     * @param groups
+     */
+    public static <T> void checkInvariants(T object, Class<?>... groups){
+        Set<ConstraintViolation<T>> constraintViolations = validator.validate(object, groups);
         if(constraintViolations!=null && constraintViolations.size() > 0){
             throw new InvariantFailedException(new HashSet<ConstraintViolation>(constraintViolations));
         }
