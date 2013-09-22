@@ -40,6 +40,7 @@ public final class Contract {
     }
 
     public static <T> void requires(T object, Class<?>... groups){
+        requires(object!=null);
         Set<ConstraintViolation<T>> constraintViolations = validator.validate(object, groups);
         if(constraintViolations!=null && constraintViolations.size() > 0){
             throw new PreconditionFailedException(new HashSet<ConstraintViolation>(constraintViolations));
@@ -65,6 +66,7 @@ public final class Contract {
     }
 
     public static <T> void ensures(T object, Class<?>... groups){
+        ensures(object!=null);
         Set<ConstraintViolation<T>> constraintViolations = validator.validate(object, groups);
         if(constraintViolations!=null && constraintViolations.size() > 0){
             throw new PostconditionFailedException(new HashSet<ConstraintViolation>(constraintViolations));
