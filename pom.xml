@@ -6,7 +6,7 @@
 
     <groupId>org.nthdimenzion</groupId>
     <artifactId>dbc</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <dependencies>
 
