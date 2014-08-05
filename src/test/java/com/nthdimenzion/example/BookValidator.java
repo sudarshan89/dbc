@@ -9,14 +9,14 @@ import javax.validation.ConstraintValidatorContext;
  * Date: 22/9/13
  * Time: 1:24 PM
  */
-public class BookValidator implements ConstraintValidator<BookInvariant,UnitTestBook>{
+public class BookValidator implements ConstraintValidator<BookInvariant,Book>{
     @Override
     public void initialize(BookInvariant constraintAnnotation) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public boolean isValid(UnitTestBook book, ConstraintValidatorContext context) {
+    public boolean isValid(Book book, ConstraintValidatorContext context) {
         return book.getTitle()!=null && book.getTitle().length() > 0 && book.getPrice()!=null && book.getPrice().intValue() > 0;
     }
 

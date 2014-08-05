@@ -14,7 +14,7 @@ import java.util.Objects;
  * Time: 1:04 PM
  */
 @BookInvariant
-public class UnitTestBook {
+public class Book {
 
     @NotBlank
     private final String title;
@@ -22,7 +22,7 @@ public class UnitTestBook {
     @NotNull
     private BigDecimal price;
 
-    public UnitTestBook(String title,BigDecimal price) {
+    public Book(String title, BigDecimal price) {
         Contract.requires(title!=null && title.length() > 0);
         Contract.requires(price != null);
         this.title = title;
@@ -54,7 +54,7 @@ public class UnitTestBook {
         {
             return false;
         }
-        final UnitTestBook other = (UnitTestBook) obj;
+        final Book other = (Book) obj;
         return Objects.equals(this.getPrice(),other.getPrice()) && Objects.equals(this.getTitle(),other.getTitle());
     }
 

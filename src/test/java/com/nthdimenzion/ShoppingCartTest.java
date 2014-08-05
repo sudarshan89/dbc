@@ -1,5 +1,7 @@
-package com.nthdimenzion.example;
+package com.nthdimenzion;
 
+import com.nthdimenzion.example.Book;
+import com.nthdimenzion.example.ShoppingCart;
 import org.junit.Test;
 import com.nthdimenzion.dbc.postcondition.PostconditionFailedException;
 import com.nthdimenzion.dbc.precondition.PreconditionFailedException;
@@ -22,46 +24,46 @@ public class ShoppingCartTest {
 
     @Test(expected = PreconditionFailedException.class)
     public void whenCreatingABookWithNoTitle_itShouldFail(){
-        UnitTestBook unitTestBook = new UnitTestBook("", BigDecimal.ONE);
+        Book book = new Book("", BigDecimal.ONE);
     }
 
     @Test(expected = PreconditionFailedException.class)
     public void whenCreatingABookWithNoPrice_itShouldFail(){
-        UnitTestBook unitTestBook = new UnitTestBook("DbC For Java", null);
+        Book book = new Book("DbC For Java", null);
 
     }
 
     @Test
     public void whenCreatingABookWithTitleAndPrice_itShouldReturnNewBook(){
-        UnitTestBook unitTestBook = new UnitTestBook("DbC For Java", BigDecimal.TEN);
-        assertNotNull(unitTestBook);
+        Book book = new Book("DbC For Java", BigDecimal.TEN);
+        assertNotNull(book);
     }
 
     @Test(expected = PreconditionFailedException.class)
     public void whenThePriceOfTheBookIsUpdatedToANegativeValue_itShouldFail(){
-        UnitTestBook unitTestBook = new UnitTestBook("DbC For Java", BigDecimal.TEN);
-        unitTestBook.setPrice(new BigDecimal(-1));
+        Book book = new Book("DbC For Java", BigDecimal.TEN);
+        book.setPrice(new BigDecimal(-1));
     }
 
     @Test
     public void whenThePriceOfTheBookIsUpdatedToAPositiveValue_itShouldGetUpdated(){
-        UnitTestBook unitTestBook = new UnitTestBook("DbC For Java", BigDecimal.TEN);
-        unitTestBook.setPrice(BigDecimal.ONE);
+        Book book = new Book("DbC For Java", BigDecimal.TEN);
+        book.setPrice(BigDecimal.ONE);
         assertThat(BigDecimal.ONE,is(equalTo(BigDecimal.ONE)));
     }
 
     @Test(expected = PreconditionFailedException.class)
     public void whenBookAddedToShoppingCartIsNull_itShouldFail(){
-        UnitTestShoppingCart shoppingCart = new UnitTestShoppingCart();
+        ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.addBooks(null,1);
 
     }
 
     @Test
     public void whenBookTenCopiesOfABookAreAddedToShoppingCart_itShouldPass(){
-        UnitTestBook unitTestBook = new UnitTestBook("DbC For Java", BigDecimal.TEN);
-        UnitTestShoppingCart shoppingCart = new UnitTestShoppingCart();
-        shoppingCart.addBooks(unitTestBook,10);
+        Book book = new Book("DbC For Java", BigDecimal.TEN);
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addBooks(book,10);
         /**
          * There is no need to check the post condition as the Contract ensures that if this is not met it will fail
          */
@@ -70,45 +72,40 @@ public class ShoppingCartTest {
 
     @Test(expected = PreconditionFailedException.class)
     public void givenShoppingCartHasThreeCopies_whenRemovedFourCopiesFromShoppingCart_itShouldFail(){
-        UnitTestBook unitTestBook = new UnitTestBook("DbC For Java", BigDecimal.TEN);
-        UnitTestShoppingCart shoppingCart = new UnitTestShoppingCart();
-        shoppingCart.addBooks(unitTestBook,3);
+        Book book = new Book("DbC For Java", BigDecimal.TEN);
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addBooks(book,3);
 
-        shoppingCart.removeBooks(unitTestBook,4);
+        shoppingCart.removeBooks(book,4);
 
     }
 
     @Test
     public void givenShoppingCartHasThreeCopies_whenRemovedTwoCopiesFromShoppingCart_itShouldPass(){
-        UnitTestBook unitTestBook = new UnitTestBook("DbC For Java", BigDecimal.TEN);
-        UnitTestShoppingCart shoppingCart = new UnitTestShoppingCart();
-        shoppingCart.addBooks(unitTestBook,3);
+        Book book = new Book("DbC For Java", BigDecimal.TEN);
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addBooks(book,3);
         /**
          * There is no need to check the post condition as the Contract ensures that if this is not met it will fail
          */
-        shoppingCart.removeBooks(unitTestBook,2);
+        shoppingCart.removeBooks(book,2);
     }
 
     @Test
     public void givenShoppingCartHasThreeCopies_whenWeCalculateTheTotalPriceOfShoppingCart_itShouldReturnTheTotalPrice(){
-        UnitTestBook unitTestBook = new UnitTestBook("DbC For Java", BigDecimal.TEN);
-        UnitTestShoppingCart shoppingCart = new UnitTestShoppingCart();
-        shoppingCart.addBooks(unitTestBook,4);
-        shoppingCart.removeBooks(unitTestBook,2);
+        Book book = new Book("DbC For Java", BigDecimal.TEN);
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addBooks(book,4);
+        shoppingCart.removeBooks(book,2);
         BigDecimal total = shoppingCart.getTotal();
         assertThat(total,is(new BigDecimal(20)));
     }
 
 
     @Test(expected = InvariantFailedException.class)
-    public void testCheckInvariants(){
-        UnitTestShoppingCart shoppingCart = new UnitTestShoppingCart();
-        shoppingCart.invalidateInvariantsOnPurpose();
-    }
-
-    @Test(expected = PostconditionFailedException.class)
-    public void testPostConditions(){
-        UnitTestShoppingCart shoppingCart = new UnitTestShoppingCart();
-        shoppingCart.failPostConditionOnPurpose();
+    public void givenShoppingCartWithMaxValueCap_whenShoppingCartValueExceedsCap_itShouldThrowInvariantFailedException(){
+        Book book = new Book("DbC For Java", BigDecimal.TEN);
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addBooks(book,11);
     }
 }

@@ -14,11 +14,12 @@ import java.math.BigDecimal;
  * Date: 22/9/13
  * Time: 1:34 PM
  */
-public class UnitTestShoppingCart implements ICheckInvariant{
+public class ShoppingCart implements ICheckInvariant{
 
-    private Multiset<UnitTestBook> books = HashMultiset.create();
+    private Multiset<Book> books = HashMultiset.create();
+    private static BigDecimal MAX_CART_VALUE = new BigDecimal(100);
 
-    public void addBooks(UnitTestBook book, int copies) {
+    public void addBooks(Book book, int copies) {
         Contract.requires(book);
         Contract.requires(copies > 0);
         int initialCount = books.count(book);
@@ -30,7 +31,7 @@ public class UnitTestShoppingCart implements ICheckInvariant{
         Contract.ensures(books.count(book) == initialCount + copies);
     }
 
-    public void removeBooks(UnitTestBook book, int copies) {
+    public void removeBooks(Book book, int copies) {
         Contract.requires(book);
         Contract.requires(books.count(book) > copies);
         int initialCount = books.count(book);
@@ -45,31 +46,19 @@ public class UnitTestShoppingCart implements ICheckInvariant{
 
     public BigDecimal getTotal() {
         BigDecimal total = BigDecimal.ZERO;
-        for (UnitTestBook book : books) {
+        for (Book book : books) {
             total = total.add(book.getPrice());
         }
-        Contract.checkInvariants(this);
-        Contract.ensures(total.intValue() > 0);
         return total;
     }
-
-    void invalidateInvariantsOnPurpose(){
-        books = null;
-        Contract.checkInvariants(this);
-    }
-
-
-    BigDecimal failPostConditionOnPurpose() {
-        BigDecimal total = BigDecimal.ZERO;
-        Contract.ensures(total.intValue() > 0);
-        return total;
-    }
-
 
     @Override
     public void checkInvariant() throws InvariantFailedException {
         if(books==null){
             throw new InvariantFailedException("Shopping cart cannot be empty");
+        }
+        if(getTotal().compareTo(MAX_CART_VALUE) > 0){
+            throw new InvariantFailedException("Shopping cart value cannot exceed " + MAX_CART_VALUE);
         }
     }
 }
