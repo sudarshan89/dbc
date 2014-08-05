@@ -1,4 +1,4 @@
-package org.nthdimenzion.invariant;
+package com.nthdimenzion.invariant;
 
 /**
  * Class invariant can be checked either via custom annotations or by implementing the ICheckVariant interface

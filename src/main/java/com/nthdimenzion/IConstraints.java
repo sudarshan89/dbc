@@ -1,4 +1,4 @@
-package org.nthdimenzion;
+package com.nthdimenzion;
 
 import javax.validation.ConstraintViolation;
 import java.util.Set;

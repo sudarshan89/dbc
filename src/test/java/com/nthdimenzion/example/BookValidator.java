@@ -1,4 +1,4 @@
-package org.nthdimenzion.example;
+package com.nthdimenzion.example;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

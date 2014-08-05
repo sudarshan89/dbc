@@ -1,6 +1,6 @@
-package org.nthdimenzion.dbc.precondition;
+package com.nthdimenzion.dbc.precondition;
 
-import org.nthdimenzion.IConstraints;
+import com.nthdimenzion.IConstraints;
 
 import javax.validation.ConstraintViolation;
 import java.util.HashSet;

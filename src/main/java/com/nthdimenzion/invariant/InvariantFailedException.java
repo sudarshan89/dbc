@@ -1,6 +1,6 @@
-package org.nthdimenzion.invariant;
+package com.nthdimenzion.invariant;
 
-import org.nthdimenzion.IConstraints;
+import com.nthdimenzion.IConstraints;
 
 import javax.validation.ConstraintViolation;
 import java.util.HashSet;

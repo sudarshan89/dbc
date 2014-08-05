@@ -1,9 +1,9 @@
-package org.nthdimenzion;
+package com.nthdimenzion;
 
-import org.nthdimenzion.dbc.postcondition.PostconditionFailedException;
-import org.nthdimenzion.dbc.precondition.PreconditionFailedException;
-import org.nthdimenzion.invariant.ICheckInvariant;
-import org.nthdimenzion.invariant.InvariantFailedException;
+import com.nthdimenzion.invariant.InvariantFailedException;
+import com.nthdimenzion.dbc.postcondition.PostconditionFailedException;
+import com.nthdimenzion.dbc.precondition.PreconditionFailedException;
+import com.nthdimenzion.invariant.ICheckInvariant;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;

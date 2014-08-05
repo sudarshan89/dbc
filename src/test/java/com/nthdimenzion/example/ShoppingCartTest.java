@@ -1,9 +1,9 @@
-package org.nthdimenzion.example;
+package com.nthdimenzion.example;
 
 import org.junit.Test;
-import org.nthdimenzion.dbc.postcondition.PostconditionFailedException;
-import org.nthdimenzion.dbc.precondition.PreconditionFailedException;
-import org.nthdimenzion.invariant.InvariantFailedException;
+import com.nthdimenzion.dbc.postcondition.PostconditionFailedException;
+import com.nthdimenzion.dbc.precondition.PreconditionFailedException;
+import com.nthdimenzion.invariant.InvariantFailedException;
 
 import java.math.BigDecimal;
 

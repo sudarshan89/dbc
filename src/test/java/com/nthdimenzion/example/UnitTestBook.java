@@ -1,7 +1,7 @@
-package org.nthdimenzion.example;
+package com.nthdimenzion.example;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.nthdimenzion.Contract;
+import com.nthdimenzion.Contract;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;

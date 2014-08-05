@@ -1,10 +1,10 @@
-package org.nthdimenzion.example;
+package com.nthdimenzion.example;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
-import org.nthdimenzion.Contract;
-import org.nthdimenzion.invariant.ICheckInvariant;
-import org.nthdimenzion.invariant.InvariantFailedException;
+import com.nthdimenzion.Contract;
+import com.nthdimenzion.invariant.ICheckInvariant;
+import com.nthdimenzion.invariant.InvariantFailedException;
 
 import java.math.BigDecimal;
 

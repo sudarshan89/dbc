@@ -1,6 +1,6 @@
-package org.nthdimenzion.dbc.postcondition;
+package com.nthdimenzion.dbc.postcondition;
 
-import org.nthdimenzion.IConstraints;
+import com.nthdimenzion.IConstraints;
 
 import javax.validation.ConstraintViolation;
 import java.util.HashSet;
