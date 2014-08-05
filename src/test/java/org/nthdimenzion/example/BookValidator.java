@@ -17,7 +17,7 @@ public class BookValidator implements ConstraintValidator<BookInvariant,UnitTest
 
     @Override
     public boolean isValid(UnitTestBook book, ConstraintValidatorContext context) {
-        return book.getTitle()!=null && book.getTitle().length() > 0 && book.getPrice()!=null && book.getPrice().intValue() > 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return book.getTitle()!=null && book.getTitle().length() > 0 && book.getPrice()!=null && book.getPrice().intValue() > 0;
     }
 
 }

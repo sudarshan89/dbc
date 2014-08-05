@@ -61,7 +61,7 @@ public final class Contract {
     }
 
     /**
-     * Class invariants can be defined using the Bean validation API for by implementing the ICheckInvariant interface
+     * Class invariants can be defined using the Bean validation API OR by implementing the ICheckInvariant interface
      * @param groups
      */
     public static <T> void checkInvariants(T object, Class<?>... groups){
