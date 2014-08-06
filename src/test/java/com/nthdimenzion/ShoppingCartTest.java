@@ -1,11 +1,10 @@
 package com.nthdimenzion;
 
+import com.nthdimenzion.dbc.precondition.PreconditionFailedException;
 import com.nthdimenzion.example.Book;
 import com.nthdimenzion.example.ShoppingCart;
-import org.junit.Test;
-import com.nthdimenzion.dbc.postcondition.PostconditionFailedException;
-import com.nthdimenzion.dbc.precondition.PreconditionFailedException;
 import com.nthdimenzion.invariant.InvariantFailedException;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 

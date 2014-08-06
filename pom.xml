@@ -4,9 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.nthdimenzion</groupId>
+    <groupId>com.nthdimenzion</groupId>
     <artifactId>dbc</artifactId>
     <version>1.0</version>
+    <packaging>jar</packaging>
+    <name>Design By Contract for Java</name>
+    <description>A design by contract library for Java, leveraging the Bean Validation API.</description>
+    <url>https://github.com/sudarshan89/dbc</url>
 
     <dependencies>
 
@@ -46,7 +50,58 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-sudarshan89-maven-dbc</id>
+            <name>sudarshan89-maven-dbc</name>
+            <url>https://api.bintray.com/maven/sudarshan89/maven/dbc</url>
+        </repository>
+    </distributionManagement>
+
+    <licenses>
+        <license>
+            <name>Apache2.0</name>
+        </license>
+        <license>
+            <name>MIT</name>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:sudarshan89/dbc.git</connection>
+        <url>scm:git:git@github.com:sudarshan/bdc.git</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>sudarshan89</id>
+            <name>Sudarshan</name>
+            <email>sudarshan89@outlook.com</email>
+            <url>http://noobjuggler.blogspot.com</url>
+            <organization>NthDimenzion</organization>
+            <organizationUrl>http://nthdimenzion.com</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
 
 </project>
