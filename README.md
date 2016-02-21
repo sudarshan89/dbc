@@ -1,7 +1,7 @@
 Design By Contract for Java
 ===
 
-![Badge](https://img.shields.io/shippable/56c782b11895ca44747475a6.svg)
+![Badge](https://img.shields.io/shippable/5507a66a5ab6cc1352a0fe1d.svg)
 
 A design by contract library for Java, leveraging the Bean Validation API.
 
